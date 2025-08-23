@@ -72,8 +72,8 @@
 
 \usepackage{xspace}
 \newcommand{\zB}{z.\,B.\xspace}
-\usepackage{xfrac}
-\UseCollection{xfrac}{plainmath}
+% \usepackage{xfrac}
+% \UseCollection{xfrac}{plainmath}
 
 % Config Slide Notes
 \usepackage{pgfpages}
@@ -156,12 +156,12 @@
 }
 
 \newcommand{\vltwoimg}[2]{
-\begin{textblock*}{64mm}(0mm,25mm)
-    \includegraphics[width=64mm,height=35mm]{#1}
-\end{textblock*}
-\begin{textblock*}{64mm}(0mm,61mm)
-    \includegraphics[width=64mm,height=34mm]{#2}
-\end{textblock*}
+	\begin{textblock*}{64mm}(0mm,25mm)
+		\includegraphics[width=64mm,height=35mm]{#1}
+	\end{textblock*}
+	\begin{textblock*}{64mm}(0mm,61mm)
+		\includegraphics[width=64mm,height=34mm]{#2}
+	\end{textblock*}
 }
 
 \newcommand{\vrthreeimg}[3]{
@@ -211,44 +211,44 @@
 }
 
 \newcommand{\bimg}[2]{
-    \vspace{28mm}
+	\vspace{28mm}
 	\includegraphics[width=#1]{#2}
 }
 
 \newcommand{\limg}[1]{
-\begin{textblock*}{60mm}(0mm,24mm)
-    \includegraphics[width=60mm,height=68mm]{#1}
-\end{textblock*}
+	\begin{textblock*}{60mm}(0mm,24mm)
+		\includegraphics[width=60mm,height=68mm]{#1}
+	\end{textblock*}
 }
 
 \newcommand{\rimg}[1]{
-\begin{textblock*}{60mm}(68mm,24mm)
-    \includegraphics[width=60mm,height=68mm]{#1}
-\end{textblock*}
+	\begin{textblock*}{60mm}(68mm,24mm)
+		\includegraphics[width=60mm,height=68mm]{#1}
+	\end{textblock*}
 }
 
 \newcommand{\bgimg}[1]{
-\begin{bgblock}{0mm}{0mm}%130x95
-	\includegraphics[width=\paperwidth]{#1}
-\end{bgblock}
+	\begin{bgblock}{0mm}{0mm}%130x95
+		\includegraphics[width=\paperwidth]{#1}
+	\end{bgblock}
 }
 
 \newcommand{\hbgimg}[1]{
-\begin{bgblock}{0mm}{0mm}%130x95
-	\includegraphics[height=\paperheight]{#1}
-\end{bgblock}
+	\begin{bgblock}{0mm}{0mm}%130x95
+		\includegraphics[height=\paperheight]{#1}
+	\end{bgblock}
 }
 
 \newcommand{\compactbgimg}[1]{
-\begin{bgblock}{0mm}{0mm}%130x95
-	\includegraphics[width=\paperwidth, height=\paperheight]{#1}
-\end{bgblock}
+	\begin{bgblock}{0mm}{0mm}%130x95
+		\includegraphics[width=\paperwidth, height=\paperheight]{#1}
+	\end{bgblock}
 }
 
 \newcommand{\ltxt}[3]{
 	\begin{textblock*}{62mm}(3mm,24mm)
 		\begin{tpblock}{#1}{#2}
-            #3
+			#3
 		\end{tpblock}
 	\end{textblock*}
 }
@@ -256,7 +256,7 @@
 \newcommand{\rtxt}[3]{
 	\begin{textblock*}{60mm}(66mm,24mm)
 		\begin{tpblock}{#1}{#2}
-            #3
+			#3
 		\end{tpblock}
 	\end{textblock*}
 }
@@ -264,7 +264,7 @@
 \newcommand{\utxt}[3]{
 	\begin{textblock*}{120mm}(5mm,26mm)
 		\begin{tpblock}{#1}{#2}
-            #3
+			#3
 		\end{tpblock}
 	\end{textblock*}
 }
@@ -272,15 +272,15 @@
 \newcommand{\btxt}[3]{
 	\begin{textblock*}{120mm}(5mm,55mm)
 		\begin{tpblock}{#1}{#2}
-            #3
+			#3
 		\end{tpblock}
 	\end{textblock*}
 }
 
 \newcommand{\txt}[3]{
-    \begin{tpblock}{#1}{#2}
-            #3
-    \end{tpblock}
+	\begin{tpblock}{#1}{#2}
+		#3
+	\end{tpblock}
 }
 
 %----------------------------------------------------------------------------------------
