@@ -321,6 +321,27 @@
 \makeatother
 
 %----------------------------------------------------------------------------------------
+%           NOTES ITEMIZE CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\makeatletter
+\def\beamer@setupnote{%
+	\gdef\beamer@notesactions{%
+		\beamer@outsideframenote{%
+			\beamer@atbeginnote%
+			\beamer@notes%
+			\ifx\beamer@noteitems\@empty\else
+				\begin{itemize}\itemsep=0pt\parskip=0pt%
+					\beamer@noteitems%
+				\end{itemize}%
+			\fi%
+			\beamer@atendnote%
+		}%
+		\gdef\beamer@notesactions{}%
+	}
+}
+\makeatother
+%----------------------------------------------------------------------------------------
 %           TIKZ PLOT CONFIGURATION
 %----------------------------------------------------------------------------------------
 
