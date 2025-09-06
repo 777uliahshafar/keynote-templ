@@ -139,10 +139,18 @@
 }
 
 % Creating centering notes
-\newcommand{\notes}[1]{\note{\vfill
-		%    \begin{center}
+\newcommand{\noc}[1]{\note{\vfill
+		   \begin{center}
 		{#1}
-		%    \end{center}
+		   \end{center}
+		\vfill
+	}}
+
+% Itemize notes
+    \newcommand{\nit}[1]{\note[itemize]{\vfill
+		   \begin{center}
+		{#1}
+		   \end{center}
 		\vfill
 	}}
 
