@@ -235,15 +235,15 @@
 	\end{textblock*}
 }
 
-\newcommand{\bgimg}[1]{
+\newcommand{\bgimg}[2]{
 	\begin{bgblock}{0mm}{0mm}%130x95
-		\includegraphics[width=\paperwidth]{#1}
+    \includegraphics<{#1}>[width=\paperwidth]{{#2}}
 	\end{bgblock}
 }
 
-\newcommand{\hbgimg}[1]{
+\newcommand{\hbgimg}[2]{
 	\begin{bgblock}{0mm}{0mm}%130x95
-		\includegraphics[height=\paperheight]{#1}
+        \includegraphics<{#1}>[height=\paperheight]{{#2}}
 	\end{bgblock}
 }
 
