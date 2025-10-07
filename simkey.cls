@@ -99,386 +99,405 @@
 	\usebeamercolor[fg]{itemize item}
 	\usebeamertemplate{itemize item},noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 
+% pagenumber
+\setbeamercolor{footline}{fg=blue}
+\setbeamerfont{footline}{size=\small}
+\addtobeamertemplate{navigation symbols}{}{%
+	\usebeamerfont{footline}%
+	\usebeamercolor[fg]{footline}%
+	\hspace{1em}%
+	((\insertframenumber))
+	}
 
-%----------------------------------------------------------------------------------------
-%           SOMETHING ABOUT LABELING
-%----------------------------------------------------------------------------------------
+	% page number notes
+	% \usepackage{tikz}
+	\newcommand{\footlineextra}[1]{
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[yshift=2ex,anchor=south east] at (current page.south east) {\usebeamerfont{author in head/foot}#1};
+		\end{tikzpicture}
+	}
 
+	\AtEndNote{\footlineextra{\usebeamercolor[fg]{footline}Slide \insertframenumber}}
 
-\makeatletter
-\newenvironment{labeling}[2][]{%
-	\def\sc@septext{#1}%
-	\list{}{\settowidth{\labelwidth}{{%
-					#2%
-					\sc@septext%
-				}}%
-		\leftmargin\labelwidth \advance\leftmargin by \labelsep
-		\let\makelabel\labelinglabel
-	}%
-}{%
-	\endlist
-}
-\newcommand\labelinglabel[1]{%
-	#1\hfil
-	\sc@septext%
-}
-\makeatother
-
-%----------------------------------------------------------------------------------------
-%           New Environment/cmd
-%----------------------------------------------------------------------------------------
-%new block environemtn
-\newenvironment{blockcolor}
-{\begin{alertblock}
-		}
-		{
-
-		\centering
-		\includegraphics[width=2cm,trim={0cm 10cm 0cm 9cm}, clip]{figures/batik.png}
-	\end{alertblock}
-}
-
-% Creating centering notes
-\newcommand{\noc}[2]{\note<{#1}>{\vfill
-		   \begin{center}
-		{#1}
-		   \end{center}
-		\vfill
-	}}
-
-% Itemize  notes
-    \newcommand{\nit}[2]{\note<{#1}>[itemize]{\vfill
-		   \begin{center}
-		{#2}
-		   \end{center}
-		\vfill
-	}}
-
-\newcommand{\vrtwoimg}[2]{
-	\begin{textblock*}{62mm}(64mm,25mm)
-		\includegraphics[width=64mm,height=35mm]{#1}
-	\end{textblock*}
-	\begin{textblock*}{62mm}(64mm,61mm)
-		\includegraphics[width=64mm,height=34mm]{#2}
-	\end{textblock*}
-}
-
-\newcommand{\vltwoimg}[2]{
-	\begin{textblock*}{64mm}(0mm,25mm)
-		\includegraphics[width=64mm,height=35mm]{#1}
-	\end{textblock*}
-	\begin{textblock*}{64mm}(0mm,61mm)
-		\includegraphics[width=64mm,height=34mm]{#2}
-	\end{textblock*}
-}
-
-\newcommand{\vrthreeimg}[3]{
-	\begin{textblock*}{44mm}(0mm,25mm)
-		\includegraphics[width=44mm,height=23mm]{#1}
-	\end{textblock*}
-	\begin{textblock*}{44mm}(0mm,49mm)
-		\includegraphics[width=44mm,height=23mm]{#2}
-	\end{textblock*}
-	\begin{textblock*}{44mm}(0mm,73mm)
-		\includegraphics[width=44mm,height=22mm]{#3}
-	\end{textblock*}
-}
-
-\newcommand{\vlthreeimg}[3]{
-	\begin{textblock*}{44mm}(0mm,25mm)
-		\includegraphics[width=44mm,height=23mm]{#1}
-	\end{textblock*}
-	\begin{textblock*}{44mm}(0mm,49mm)
-		\includegraphics[width=44mm,height=23mm]{#2}
-	\end{textblock*}
-	\begin{textblock*}{44mm}(0mm,73mm)
-		\includegraphics[width=44mm,height=22mm]{#3}
-	\end{textblock*}
-}
-
-\newcommand{\htwoimg}[2]{
-	\begin{textblock*}{63mm}(0mm,59mm)
-		\includegraphics[width=64mm,height=35mm]{#1}
-	\end{textblock*}
-	\begin{textblock*}{62mm}(65mm,59mm)
-		\includegraphics[width=64mm,height=35mm]{#2}
-	\end{textblock*}
-}
+	%----------------------------------------------------------------------------------------
+	%           SOMETHING ABOUT LABELING
+	%----------------------------------------------------------------------------------------
 
 
-\newcommand{\hthreeimg}[3]{
-	\begin{textblock*}{42mm}(0mm,66mm)
-		\includegraphics[width=42mm,height=24mm]{#1}
-	\end{textblock*}
-	\begin{textblock*}{42mm}(43mm,66mm)
-		\includegraphics[width=42mm,height=24mm]{#2}
-	\end{textblock*}
-	\begin{textblock*}{42mm}(86mm,66mm)
-		\includegraphics[width=42mm,height=24mm]{#3}
-	\end{textblock*}
-}
-
-\newcommand{\bimg}[2]{
-	\vspace{28mm}
-	\includegraphics[width=#1]{#2}
-}
-
-\newcommand{\limg}[1]{
-	\begin{textblock*}{60mm}(0mm,24mm)
-		\includegraphics[width=60mm,height=68mm]{#1}
-	\end{textblock*}
-}
-
-\newcommand{\rimg}[1]{
-	\begin{textblock*}{60mm}(68mm,24mm)
-		\includegraphics[width=60mm,height=68mm]{#1}
-	\end{textblock*}
-}
-
-\newcommand{\bgimg}[2]{
-	\begin{bgblock}{0mm}{0mm}%130x95
-    \includegraphics<{#1}>[width=\paperwidth]{{#2}}
-	\end{bgblock}
-}
-
-\newcommand{\hbgimg}[2]{
-	\begin{bgblock}{0mm}{0mm}%130x95
-        \includegraphics<{#1}>[height=\paperheight]{{#2}}
-	\end{bgblock}
-}
-
-\newcommand{\compactbgimg}[1]{
-	\begin{bgblock}{0mm}{0mm}%130x95
-		\includegraphics[width=\paperwidth, height=\paperheight]{#1}
-	\end{bgblock}
-}
-
-\newcommand{\ltxt}[3]{
-	\begin{textblock*}{62mm}(3mm,24mm)
-		\begin{tpblock}{#1}{#2}
-			#3
-		\end{tpblock}
-	\end{textblock*}
-}
-
-\newcommand{\rtxt}[3]{
-	\begin{textblock*}{60mm}(66mm,24mm)
-		\begin{tpblock}{#1}{#2}
-			#3
-		\end{tpblock}
-	\end{textblock*}
-}
-
-\newcommand{\utxt}[3]{
-	\begin{textblock*}{120mm}(5mm,26mm)
-		\begin{tpblock}{#1}{#2}
-			#3
-		\end{tpblock}
-	\end{textblock*}
-}
-
-\newcommand{\btxt}[3]{
-	\begin{textblock*}{120mm}(5mm,55mm)
-		\begin{tpblock}{#1}{#2}
-			#3
-		\end{tpblock}
-	\end{textblock*}
-}
-
-\newcommand{\txt}[3]{
-	\begin{tpblock}{#1}{#2}
-		#3
-	\end{tpblock}
-}
-
-%----------------------------------------------------------------------------------------
-%           BLOCK
-%----------------------------------------------------------------------------------------
-\usepackage[most]{tcolorbox}
-\newtcolorbox{tpblock}[3][]
-{%
-	code={%
-			\usebeamercolor{block title}
-			\colorlet{titlebg}{#2}
-			\colorlet{titlefg}{#3}
-			\usebeamercolor{block body alerted}
-			\colorlet{bodybg}{#2}
-			\colorlet{bodyfg}{#3}
-		},
-	enhanced,
-	boxsep=0.25ex,
-	arc=1.25ex,
-	opacityframe=0,
-	opacityback=.64,
-	colbacktitle=titlebg,
-	coltitle=titlefg,
-	colback=bodybg,
-	colupper=bodyfg,
-	boxrule=0pt,
-	#1
-}
-
-\makeatletter
-\newbox\@bgblock
-\newenvironment{bgblock}[2]{%
-	\global\setbox\@bgblock=\vbox\bgroup%
-	\unvbox\@bgblock%
-	\vbox to0pt\bgroup\vskip#2\hbox to0pt\bgroup\hskip#1\relax%
-}{\egroup\egroup\egroup}
-\addtobeamertemplate{background}{\box\@bgblock}{}
-\makeatother
-
-%----------------------------------------------------------------------------------------
-%           NOTES ITEMIZE CONFIGURATION
-%----------------------------------------------------------------------------------------
-
-\makeatletter
-\def\beamer@setupnote{%
-	\gdef\beamer@notesactions{%
-		\beamer@outsideframenote{%
-			\beamer@atbeginnote%
-			\beamer@notes%
-			\ifx\beamer@noteitems\@empty\else
-				\begin{itemize}\itemsep=0pt\parskip=0pt%
-					\beamer@noteitems%
-				\end{itemize}%
-			\fi%
-			\beamer@atendnote%
+	\makeatletter
+	\newenvironment{labeling}[2][]{%
+		\def\sc@septext{#1}%
+		\list{}{\settowidth{\labelwidth}{{%
+						#2%
+						\sc@septext%
+					}}%
+			\leftmargin\labelwidth \advance\leftmargin by \labelsep
+			\let\makelabel\labelinglabel
 		}%
-		\gdef\beamer@notesactions{}%
+	}{%
+		\endlist
 	}
-}
-\makeatother
-%----------------------------------------------------------------------------------------
-%           TIKZ PLOT CONFIGURATION
-%----------------------------------------------------------------------------------------
+	\newcommand\labelinglabel[1]{%
+		#1\hfil
+		\sc@septext%
+	}
+	\makeatother
 
-% Paket zum Erstellen von Plots mit TikZ
-\usepackage{pgfplots}
-% immer die neueste Version benutzen
-\pgfplotsset{compat=newest}
-% Verbindung von Linien durch eine schräge Kante
-\pgfplotsset{every axis/.append style={line join=bevel}}
-% Formatvorlage für Präsentationen
-\mode<beamer>{
-	\pgfplotsset{
-		beamer/.style={
-				width=0.8\textwidth,
-				height=0.45\textwidth,
-				legend style={font=\scriptsize},
-				tick label style={font=\footnotesize},
-				label style={font=\small},
-				max space between ticks=28,
+	%----------------------------------------------------------------------------------------
+	%           New Environment/cmd
+	%----------------------------------------------------------------------------------------
+	%new block environemtn
+	\newenvironment{blockcolor}
+	{\begin{alertblock}
 			}
+			{
+
+			\centering
+			\includegraphics[width=2cm,trim={0cm 10cm 0cm 9cm}, clip]{figures/batik.png}
+		\end{alertblock}
 	}
-}
-\mode<handout>{
+
+	% Creating centering notes
+	\newcommand{\noc}[2]{\note<{#1}>{\vfill
+			\begin{center}
+				{#1}
+			\end{center}
+			\vfill
+		}}
+
+	% Itemize  notes
+	\newcommand{\nit}[2]{\note<{#1}>[itemize]{\vfill
+			\begin{center}
+				{#2}
+			\end{center}
+			\vfill
+		}}
+
+	\newcommand{\vrtwoimg}[2]{
+		\begin{textblock*}{62mm}(64mm,25mm)
+			\includegraphics[width=64mm,height=35mm]{#1}
+		\end{textblock*}
+		\begin{textblock*}{62mm}(64mm,61mm)
+			\includegraphics[width=64mm,height=34mm]{#2}
+		\end{textblock*}
+	}
+
+	\newcommand{\vltwoimg}[2]{
+		\begin{textblock*}{64mm}(0mm,25mm)
+			\includegraphics[width=64mm,height=35mm]{#1}
+		\end{textblock*}
+		\begin{textblock*}{64mm}(0mm,61mm)
+			\includegraphics[width=64mm,height=34mm]{#2}
+		\end{textblock*}
+	}
+
+	\newcommand{\vrthreeimg}[3]{
+		\begin{textblock*}{44mm}(0mm,25mm)
+			\includegraphics[width=44mm,height=23mm]{#1}
+		\end{textblock*}
+		\begin{textblock*}{44mm}(0mm,49mm)
+			\includegraphics[width=44mm,height=23mm]{#2}
+		\end{textblock*}
+		\begin{textblock*}{44mm}(0mm,73mm)
+			\includegraphics[width=44mm,height=22mm]{#3}
+		\end{textblock*}
+	}
+
+	\newcommand{\vlthreeimg}[3]{
+		\begin{textblock*}{44mm}(0mm,25mm)
+			\includegraphics[width=44mm,height=23mm]{#1}
+		\end{textblock*}
+		\begin{textblock*}{44mm}(0mm,49mm)
+			\includegraphics[width=44mm,height=23mm]{#2}
+		\end{textblock*}
+		\begin{textblock*}{44mm}(0mm,73mm)
+			\includegraphics[width=44mm,height=22mm]{#3}
+		\end{textblock*}
+	}
+
+	\newcommand{\htwoimg}[2]{
+		\begin{textblock*}{63mm}(0mm,59mm)
+			\includegraphics[width=64mm,height=35mm]{#1}
+		\end{textblock*}
+		\begin{textblock*}{62mm}(65mm,59mm)
+			\includegraphics[width=64mm,height=35mm]{#2}
+		\end{textblock*}
+	}
+
+
+	\newcommand{\hthreeimg}[3]{
+		\begin{textblock*}{42mm}(0mm,66mm)
+			\includegraphics[width=42mm,height=24mm]{#1}
+		\end{textblock*}
+		\begin{textblock*}{42mm}(43mm,66mm)
+			\includegraphics[width=42mm,height=24mm]{#2}
+		\end{textblock*}
+		\begin{textblock*}{42mm}(86mm,66mm)
+			\includegraphics[width=42mm,height=24mm]{#3}
+		\end{textblock*}
+	}
+
+	\newcommand{\bimg}[2]{
+		\vspace{28mm}
+		\includegraphics[width=#1]{#2}
+	}
+
+	\newcommand{\limg}[1]{
+		\begin{textblock*}{60mm}(0mm,24mm)
+			\includegraphics[width=60mm,height=68mm]{#1}
+		\end{textblock*}
+	}
+
+	\newcommand{\rimg}[1]{
+		\begin{textblock*}{60mm}(68mm,24mm)
+			\includegraphics[width=60mm,height=68mm]{#1}
+		\end{textblock*}
+	}
+
+	\newcommand{\bgimg}[2]{
+		\begin{bgblock}{0mm}{0mm}%130x95
+			\includegraphics<{#1}>[width=\paperwidth]{{#2}}
+		\end{bgblock}
+	}
+
+	\newcommand{\hbgimg}[2]{
+		\begin{bgblock}{0mm}{0mm}%130x95
+			\includegraphics<{#1}>[height=\paperheight]{{#2}}
+		\end{bgblock}
+	}
+
+	\newcommand{\compactbgimg}[1]{
+		\begin{bgblock}{0mm}{0mm}%130x95
+			\includegraphics[width=\paperwidth, height=\paperheight]{#1}
+		\end{bgblock}
+	}
+
+	\newcommand{\ltxt}[3]{
+		\begin{textblock*}{62mm}(3mm,24mm)
+			\begin{tpblock}{#1}{#2}
+				#3
+			\end{tpblock}
+		\end{textblock*}
+	}
+
+	\newcommand{\rtxt}[3]{
+		\begin{textblock*}{60mm}(66mm,24mm)
+			\begin{tpblock}{#1}{#2}
+				#3
+			\end{tpblock}
+		\end{textblock*}
+	}
+
+	\newcommand{\utxt}[3]{
+		\begin{textblock*}{120mm}(5mm,26mm)
+			\begin{tpblock}{#1}{#2}
+				#3
+			\end{tpblock}
+		\end{textblock*}
+	}
+
+	\newcommand{\btxt}[3]{
+		\begin{textblock*}{120mm}(5mm,55mm)
+			\begin{tpblock}{#1}{#2}
+				#3
+			\end{tpblock}
+		\end{textblock*}
+	}
+
+	\newcommand{\txt}[3]{
+		\begin{tpblock}{#1}{#2}
+			#3
+		\end{tpblock}
+	}
+
+	%----------------------------------------------------------------------------------------
+	%           BLOCK
+	%----------------------------------------------------------------------------------------
+	\usepackage[most]{tcolorbox}
+	\newtcolorbox{tpblock}[3][]
+	{%
+		code={%
+				\usebeamercolor{block title}
+				\colorlet{titlebg}{#2}
+				\colorlet{titlefg}{#3}
+				\usebeamercolor{block body alerted}
+				\colorlet{bodybg}{#2}
+				\colorlet{bodyfg}{#3}
+			},
+		enhanced,
+		boxsep=0.25ex,
+		arc=1.25ex,
+		opacityframe=0,
+		opacityback=.64,
+		colbacktitle=titlebg,
+		coltitle=titlefg,
+		colback=bodybg,
+		colupper=bodyfg,
+		boxrule=0pt,
+		#1
+	}
+
+	\makeatletter
+	\newbox\@bgblock
+	\newenvironment{bgblock}[2]{%
+		\global\setbox\@bgblock=\vbox\bgroup%
+		\unvbox\@bgblock%
+		\vbox to0pt\bgroup\vskip#2\hbox to0pt\bgroup\hskip#1\relax%
+	}{\egroup\egroup\egroup}
+	\addtobeamertemplate{background}{\box\@bgblock}{}
+	\makeatother
+
+	%----------------------------------------------------------------------------------------
+	%           NOTES ITEMIZE CONFIGURATION
+	%----------------------------------------------------------------------------------------
+
+	\makeatletter
+	\def\beamer@setupnote{%
+		\gdef\beamer@notesactions{%
+			\beamer@outsideframenote{%
+				\beamer@atbeginnote%
+				\beamer@notes%
+				\ifx\beamer@noteitems\@empty\else
+					\begin{itemize}\itemsep=0pt\parskip=0pt%
+						\beamer@noteitems%
+					\end{itemize}%
+				\fi%
+				\beamer@atendnote%
+			}%
+			\gdef\beamer@notesactions{}%
+		}
+	}
+	\makeatother
+	%----------------------------------------------------------------------------------------
+	%           TIKZ PLOT CONFIGURATION
+	%----------------------------------------------------------------------------------------
+
+	% Paket zum Erstellen von Plots mit TikZ
+	\usepackage{pgfplots}
+	% immer die neueste Version benutzen
+	\pgfplotsset{compat=newest}
+	% Verbindung von Linien durch eine schräge Kante
+	\pgfplotsset{every axis/.append style={line join=bevel}}
+	% Formatvorlage für Präsentationen
+	\mode<beamer>{
+		\pgfplotsset{
+			beamer/.style={
+					width=0.8\textwidth,
+					height=0.45\textwidth,
+					legend style={font=\scriptsize},
+					tick label style={font=\footnotesize},
+					label style={font=\small},
+					max space between ticks=28,
+				}
+		}
+	}
+	\mode<handout>{
+		\pgfplotsset{
+			beamer/.style={
+					width=0.8\textwidth,
+					height=0.45\textwidth,
+					legend style={font=\scriptsize},
+					tick label style={font=\footnotesize},
+					label style={font=\small},
+					max space between ticks=25,
+				}
+		}
+	}
+	\mode<article>{
+		\pgfplotsset{
+			beamer/.style={
+					width=0.8\textwidth,
+					height=0.45\textwidth,
+					max space between ticks=35,
+				}
+		}
+	}
+	% neue Größenvorlage für zwei Plots nebeneinander anlegen
 	\pgfplotsset{
-		beamer/.style={
-				width=0.8\textwidth,
-				height=0.45\textwidth,
+		scriptsize/.style={
+				width=0.34\textwidth,
+				height=0.1768\textwidth,
 				legend style={font=\scriptsize},
-				tick label style={font=\footnotesize},
-				label style={font=\small},
+				tick label style={font=\scriptsize},
+				label style={font=\footnotesize},
+				title style={font=\footnotesize},
+				every axis title shift=0pt,
 				max space between ticks=25,
+				every mark/.append style={mark size=7},
+				major tick length=0.1cm,
+				minor tick length=0.066cm,
 			}
 	}
-}
-\mode<article>{
 	\pgfplotsset{
-		beamer/.style={
-				width=0.8\textwidth,
-				height=0.45\textwidth,
-				max space between ticks=35,
+		small/.style={
+				width=6.5cm,
+				height=,
+				tick label style={font=\footnotesize},
+				label style={font=\small},
+				legend style={font=\footnotesize},
+				max space between ticks=30,
 			}
 	}
-}
-% neue Größenvorlage für zwei Plots nebeneinander anlegen
-\pgfplotsset{
-	scriptsize/.style={
-			width=0.34\textwidth,
-			height=0.1768\textwidth,
-			legend style={font=\scriptsize},
-			tick label style={font=\scriptsize},
-			label style={font=\footnotesize},
-			title style={font=\footnotesize},
-			every axis title shift=0pt,
-			max space between ticks=25,
-			every mark/.append style={mark size=7},
-			major tick length=0.1cm,
-			minor tick length=0.066cm,
-		}
-}
-\pgfplotsset{
-	small/.style={
-			width=6.5cm,
-			height=,
-			tick label style={font=\footnotesize},
-			label style={font=\small},
-			legend style={font=\footnotesize},
-			max space between ticks=30,
-		}
-}
-% Legendeneintrage standardmäßig links ausrichten
-\pgfplotsset{legend cell align=left}
-% Hauptgitternetz zeichnen
-\pgfplotsset{xmajorgrids}
-\pgfplotsset{ymajorgrids}
-% Anzahl der kleinen Teilstriche zwischen zwei großen Teilstrichen
-%\pgfplotsset{minor x tick num={3}}
-%\pgfplotsset{minor y tick num={3}}
-% feines Gitternetz zeichnen
-%\pgfplotsset{xminorgrids}
-%\pgfplotsset{yminorgrids}
-% nur nach den Achsen skalieren
-\pgfplotsset{scale only axis}
-% Farben wie in MATLAB definieren
-\definecolor{matlab1}{rgb}{0,0,1}
-\definecolor{matlab2}{rgb}{0,0.5,0}
-\definecolor{matlab3}{rgb}{1,0,0}
-\definecolor{matlab4}{rgb}{0,0.75,0.75}
-\definecolor{matlab5}{rgb}{0.75,0,0.75}
-\definecolor{matlab6}{rgb}{0.75,0.75,0}
-\definecolor{matlab7}{rgb}{0.25,0.25,0.25}
-% Farbreihenfolge wie in MATLAB definieren
-\pgfplotscreateplotcyclelist{matlab}{
-	{matlab1,solid},
-	{matlab2,dashed},
-	{matlab3,dashdotted},
-	{matlab4,dotted},
-	{matlab5,densely dashed},
-	{matlab6,densely dashdotted},
-	{matlab7,densely dotted}% dies unterdrückt einen Fehler
-}
-% Farbreihenfolge wie in MATLAB benutzen
-\pgfplotsset{cycle list name=matlab}
-% Farbreihenfolge von pgfplots benutzen
-%\pgfplotsset{cycle list name=color list}
-% nur Graustufen benutzen
-%\pgfplotsset{cycle list name=linestyles}
-% Strichstärke auf 1pt festlegen
-\pgfplotsset{every axis plot/.append style={line width=1pt}}
-% für deutsche Dokumente ein Komma benutzen
-\addto\extrasngerman{\pgfplotsset{/pgf/number format/.cd,set decimal separator={{{,}}}}}
-% ein halbes Leerzeichen als Tausendertrennzeichen benutzen
-%\pgfplotsset{/pgf/number format/.cd,1000 sep={\,}}
-% kein Tausendertrennzeichen verwenden
-\pgfplotsset{/pgf/number format/.cd,1000 sep={}}
-% Zahlen kleiner als 0.1 auch im fixed-Format ausgeben
-\pgfplotsset{/pgf/number format/.cd,std=-2}
-% neue Positionen für Legenden anlegen
-\pgfplotsset{/pgfplots/legend pos/north/.style={/pgfplots/legend style={at={(0.50,0.97)},anchor=north}}}
-\pgfplotsset{/pgfplots/legend pos/south/.style={/pgfplots/legend style={at={(0.50,0.03)},anchor=south}}}
-\pgfplotsset{/pgfplots/legend pos/east/.style={/pgfplots/legend style={at={(0.97,0.50)},anchor=east}}}
-\pgfplotsset{/pgfplots/legend pos/west/.style={/pgfplots/legend style={at={(0.03,0.50)},anchor=west}}}
-\pgfplotsset{/pgfplots/legend pos/outer north/.style={/pgfplots/legend style={at={(0.50,1.03)},anchor=south}}}
+	% Legendeneintrage standardmäßig links ausrichten
+	\pgfplotsset{legend cell align=left}
+	% Hauptgitternetz zeichnen
+	\pgfplotsset{xmajorgrids}
+	\pgfplotsset{ymajorgrids}
+	% Anzahl der kleinen Teilstriche zwischen zwei großen Teilstrichen
+	%\pgfplotsset{minor x tick num={3}}
+	%\pgfplotsset{minor y tick num={3}}
+	% feines Gitternetz zeichnen
+	%\pgfplotsset{xminorgrids}
+	%\pgfplotsset{yminorgrids}
+	% nur nach den Achsen skalieren
+	\pgfplotsset{scale only axis}
+	% Farben wie in MATLAB definieren
+	\definecolor{matlab1}{rgb}{0,0,1}
+	\definecolor{matlab2}{rgb}{0,0.5,0}
+	\definecolor{matlab3}{rgb}{1,0,0}
+	\definecolor{matlab4}{rgb}{0,0.75,0.75}
+	\definecolor{matlab5}{rgb}{0.75,0,0.75}
+	\definecolor{matlab6}{rgb}{0.75,0.75,0}
+	\definecolor{matlab7}{rgb}{0.25,0.25,0.25}
+	% Farbreihenfolge wie in MATLAB definieren
+	\pgfplotscreateplotcyclelist{matlab}{
+		{matlab1,solid},
+		{matlab2,dashed},
+		{matlab3,dashdotted},
+		{matlab4,dotted},
+		{matlab5,densely dashed},
+		{matlab6,densely dashdotted},
+		{matlab7,densely dotted}% dies unterdrückt einen Fehler
+	}
+	% Farbreihenfolge wie in MATLAB benutzen
+	\pgfplotsset{cycle list name=matlab}
+	% Farbreihenfolge von pgfplots benutzen
+	%\pgfplotsset{cycle list name=color list}
+	% nur Graustufen benutzen
+	%\pgfplotsset{cycle list name=linestyles}
+	% Strichstärke auf 1pt festlegen
+	\pgfplotsset{every axis plot/.append style={line width=1pt}}
+	% für deutsche Dokumente ein Komma benutzen
+	\addto\extrasngerman{\pgfplotsset{/pgf/number format/.cd,set decimal separator={{{,}}}}}
+	% ein halbes Leerzeichen als Tausendertrennzeichen benutzen
+	%\pgfplotsset{/pgf/number format/.cd,1000 sep={\,}}
+	% kein Tausendertrennzeichen verwenden
+	\pgfplotsset{/pgf/number format/.cd,1000 sep={}}
+	% Zahlen kleiner als 0.1 auch im fixed-Format ausgeben
+	\pgfplotsset{/pgf/number format/.cd,std=-2}
+	% neue Positionen für Legenden anlegen
+	\pgfplotsset{/pgfplots/legend pos/north/.style={/pgfplots/legend style={at={(0.50,0.97)},anchor=north}}}
+	\pgfplotsset{/pgfplots/legend pos/south/.style={/pgfplots/legend style={at={(0.50,0.03)},anchor=south}}}
+	\pgfplotsset{/pgfplots/legend pos/east/.style={/pgfplots/legend style={at={(0.97,0.50)},anchor=east}}}
+	\pgfplotsset{/pgfplots/legend pos/west/.style={/pgfplots/legend style={at={(0.03,0.50)},anchor=west}}}
+	\pgfplotsset{/pgfplots/legend pos/outer north/.style={/pgfplots/legend style={at={(0.50,1.03)},anchor=south}}}
 
-% Paket für SI-Einheiten
-\usepackage[binary-units]{siunitx}
-% Brüche aktivieren
-\sisetup{per-mode=fraction}
-% Dezimaltrennzeichen abhängig von der Sprache
-\addto\extrasngerman{\sisetup{output-decimal-marker={,}}}
+	% Paket für SI-Einheiten
+	\usepackage[binary-units]{siunitx}
+	% Brüche aktivieren
+	\sisetup{per-mode=fraction}
+	% Dezimaltrennzeichen abhängig von der Sprache
+	\addto\extrasngerman{\sisetup{output-decimal-marker={,}}}
 \addto\extrasenglish{\sisetup{output-decimal-marker={.}}}
 % Trennzeichen für Bereiche
 \addto\extrasngerman{\sisetup{range-phrase={ bis~}}}
