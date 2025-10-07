@@ -79,7 +79,7 @@
 \usepackage{pgfpages}
 
 %\setbeamercovered{transparent}
-\setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}\usepackage{palatino}
+\setbeamertemplate{note page}{\newgeometry{margin=2cm,width=14.2cm,height=10cm}\pagecolor{yellow!5}\insertnote}\usepackage{palatino}
 
 
 \usepackage{multirow}
