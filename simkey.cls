@@ -266,9 +266,9 @@
 		\end{bgblock}
 	}
 
-	\newcommand{\compactbgimg}[1]{
-		\begin{bgblock}{0mm}{0mm}%130x95
-			\includegraphics[width=\paperwidth, height=\paperheight]{#1}
+	\newcommand{\compactbgimg}[2]{
+		\begin{bgblock}{11mm}{10mm}%130x95
+			\includegraphics<{#1}>[width=.8\paperwidth, height=.8\paperheight]{{#2}}
 		\end{bgblock}
 	}
 
