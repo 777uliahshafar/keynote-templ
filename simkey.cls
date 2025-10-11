@@ -255,8 +255,8 @@
 	}
 
 	\newcommand{\bgimg}[2]{
-		\begin{bgblock}{0mm}{0mm}%130x95
-			\includegraphics<{#1}>[width=\paperwidth]{{#2}}
+		\begin{bgblock}{11mm}{15mm}%130x95
+			\includegraphics<{#1}>[width=.92\paperwidth]{{#2}}
 		\end{bgblock}
 	}
 
