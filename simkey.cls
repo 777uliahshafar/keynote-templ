@@ -160,7 +160,7 @@
 	% Creating centering notes
 	\newcommand{\noc}[2]{\note<{#1}>{\vfill
 			\begin{center}
-				{#1}
+				{#2}
 			\end{center}
 			\vfill
 		}}
