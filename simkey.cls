@@ -237,6 +237,18 @@
 		\end{textblock*}
 	}
 
+	\newcommand{\cornerrimg}[1]{
+		\begin{textblock*}{50mm}(70mm,55mm)
+			\includegraphics[width=40mm]{#1}
+		\end{textblock*}
+	}
+
+	\newcommand{\cornerlimg}[1]{
+		\begin{textblock*}{50mm}(15mm,55mm)
+			\includegraphics[width=40mm]{#1}
+		\end{textblock*}
+	}
+
 	\newcommand{\bimg}[2]{
 		\vspace{28mm}
 		\includegraphics[width=#1]{#2}
