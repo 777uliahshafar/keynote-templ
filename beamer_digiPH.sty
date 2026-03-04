@@ -62,6 +62,7 @@
 \setbeamerfont{frametitle}{size=\fontsize{20}{24}}
 \setbeamerfont{framesubtitle}{size=\fontsize{14}{18}}
 
+
 % Navigationssymbole ausschalten
 \setbeamertemplate{navigation symbols}{}
 
@@ -190,6 +191,8 @@
 \BeforeBeginEnvironment{frame}{%
 	\setbeamertemplate{background canvas}[color][white]%
 	\setbeamertemplate{frametitle}[standard]
+	\setbeamertemplate{itemize subitem}[square]
+	\setbeamertemplate{itemize subsubitem}[circle]
 	\setbeamercolor{frametitle}{fg=digiPH_black}
 	\setbeamercolor{normal text}{fg=digiPH_black}\usebeamercolor*{normal text}%
 }
