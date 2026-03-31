@@ -275,10 +275,12 @@
 		\end{textblock*}
 	}
 
-	\newcommand{\bgimg}[2]{
-		\begin{bgblock}{11mm}{15mm}%130x95
-			\includegraphics<{#1}>[width=.92\paperwidth]{{#2}}
-		\end{bgblock}
+	\newcommand{\bglightimg}[1]{
+		\begin{frame}[mytitle=standard,t,mybg={#1},light]\end{frame}
+	}
+
+	\newcommand{\bgdarkimg}[1]{
+		\begin{frame}[mytitle=standard,t,mybg={#1},dark]\end{frame}
 	}
 
 	\newcommand{\hbgimg}[2]{
